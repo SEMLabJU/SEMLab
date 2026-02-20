@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Gallery | SEMLAB</title>
+    <style>
+        :root {
+            --bg-deep: #050a15;
+            --accent-amber: #b87333;
+            --glass: rgba(255, 255, 255, 0.03);
+            --text-main: #ffffff;
+            --text-dim: #a0aec0;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-deep);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 71, 171, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(184, 115, 51, 0.1) 0%, transparent 40%);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 80px 20px;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 60px;
+            max-width: 800px;
+        }
+
+        .header-section h2 {
+            font-size: 12px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--accent-amber);
+            margin-bottom: 10px;
+        }
+
+        .header-section h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #fff, #64748b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Container for the 5 cards */
+        #research-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .research-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 40px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .research-card:hover {
+            transform: scale(1.02);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(184, 115, 51, 0.3);
+        }
+
+        .label {
+            color: var(--accent-amber);
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .paper-title {
+            font-size: 1.8rem;
+            line-height: 1.2;
+            margin: 0 0 20px 0;
+            font-weight: 600;
+        }
+
+        .meta-row {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+
+        .info-item span {
+            display: block;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            font-size: 9px;
+            margin-bottom: 4px;
+        }
+
+        .authors {
+            font-size: 14px;
+            color: var(--text-dim);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .gs-btn {
+            color: #fff;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 50px;
+            transition: 0.3s;
+        }
+
+        .gs-btn:hover {
+            background: #fff;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-section">
+        <h2>Publications</h2>
+        <h1>Latest Research from SEMLAB</h1>
+    </div>
+
+    <div id="research-grid">
+        </div>
+
+    <script>
+        const papers = [
+            {
+                title: "High-Efficiency Perovskite Solar Cells via Interface Engineering",
+                journal: "Nature Energy",
+                date: "Jan 2026",
+                authors: "R. Gayen, A. Einstein, et al.",
+                link: "https://scholar.google.com"
+            },
+            {
+                title: "Quantum Dot Sensitization of Nanostructured Zinc Oxide",
+                journal: "Advanced Materials",
+                date: "Nov 2025",
+                authors: "S. Mitchell, R. Gayen, J. Doe",
+                link: "https://scholar.google.com"
+            },
+            {
+                title: "Carbon Nanotube Electrodes for Flexible Supercapacitors",
+                journal: "Nano Letters",
+                date: "Sept 2025",
+                authors: "M. Planck, S. Jenkins",
+                link: "https://scholar.google.com"
+            },
+            {
+                title: "Sustainable Synthesis of Green Hydrogen Catalysts",
+                journal: "Joule",
+                date: "July 2025",
+                authors: "N. Bohr, R. Gayen, L. Meitner",
+                link: "https://scholar.google.com"
+            },
+            {
+                title: "Machine Learning Approaches to Material Discovery",
+                journal: "Scientific Reports",
+                date: "May 2025",
+                authors: "A. Lovelace, S. Mitchell",
+                link: "https://scholar.google.com"
+            }
+        ];
+
+        const grid = document.getElementById('research-grid');
+
+        papers.forEach(paper => {
+            grid.innerHTML += `
+                <div class="research-card">
+                    <span class="label">Peer Reviewed</span>
+                    <h1 class="paper-title">${paper.title}</h1>
+                    <div class="meta-row">
+                        <div class="info-item"><span>Publication</span><p>${paper.journal}</p></div>
+                        <div class="info-item"><span>Year</span><p>${paper.date}</p></div>
+                    </div>
+                    <div class="authors">
+                        <span>${paper.authors}</span>
+                        <a href="${paper.link}" class="gs-btn" target="_blank">Google Scholar</a>
+                    </div>
+                </div>
+            `;
+        });
+    </script>
+</body>
+</html>

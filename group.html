@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team | SEM Lab</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #000000;
+            --accent: #ff9f0a;
+            --text: #ffffff;
+            --glass: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.12);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg); color: var(--text); font-family: 'Plus Jakarta Sans', sans-serif; -webkit-font-smoothing: antialiased; }
+
+        /* AURORA BACKGROUND */
+        .aurora-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: #000; }
+        .aurora { position: absolute; width: 700px; height: 700px; border-radius: 50%; filter: blur(120px); opacity: 0.25; animation: float 20s infinite alternate; }
+        .aurora-1 { background: var(--accent); top: -100px; right: -50px; }
+        .aurora-2 { background: #0a84ff; bottom: -200px; left: -100px; }
+        @keyframes float { from { transform: translate(0, 0); } to { transform: translate(100px, 100px); } }
+
+        /* NAV */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 8%; position: fixed; width: 100%; top: 0; z-index: 1000; background: rgba(0,0,0,0.5); backdrop-filter: blur(20px) saturate(180%); border-bottom: 0.5px solid var(--border); }
+        .logo span { color: var(--accent); font-weight: 800; }
+        .nav-links a { color: rgba(255,255,255,0.6); text-decoration: none; margin-left: 2rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* CONTENT WRAPPER */
+        .container { padding: 8rem 8% 5rem; }
+
+        /* SECTION TITLES */
+        .section-title { font-size: 2.5rem; font-weight: 800; letter-spacing: -1.5px; margin-bottom: 3rem; text-align: left; }
+        .section-title span { color: var(--accent); }
+
+        /* PI CARD (DR. GAYEN) */
+        .pi-card {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 4rem;
+            background: var(--glass);
+            backdrop-filter: blur(30px);
+            border: 0.5px solid var(--border);
+            border-radius: 40px;
+            padding: 4rem;
+            margin-bottom: 6rem;
+        }
+
+        .pi-image {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 30px;
+            border: 0.5px solid var(--border);
+        }
+
+        .pi-info h2 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .pi-info h4 { color: var(--accent); font-weight: 400; margin-bottom: 2rem; letter-spacing: 1px; }
+        .pi-info p { color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 1.5rem; }
+
+        /* TEAM GRID */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 6rem;
+        }
+
+        .member-card {
+            background: var(--glass);
+            border: 0.5px solid var(--border);
+            border-radius: 35px;
+            padding: 2rem;
+            text-align: center;
+            transition: 0.4s cubic-bezier(0.2, 1, 0.2, 1);
+        }
+
+        .member-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.08);
+            border-color: var(--accent);
+        }
+
+        .member-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 2px solid var(--border);
+        }
+
+        .member-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .member-card p { font-size: 0.85rem; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
+        .member-card .research-focus { font-size: 0.9rem; color: rgba(255,255,255,0.5); text-transform: none; letter-spacing: 0; }
+
+        /* SOCIAL ICONS */
+        .member-socials { margin-top: 1rem; display: flex; justify-content: center; gap: 1rem; }
+        .member-socials a { color: rgba(255,255,255,0.4); transition: 0.3s; }
+        .member-socials a:hover { color: #fff; }
+
+        footer { text-align: center; padding: 4rem; opacity: 0.3; font-size: 0.8rem; }
+
+        @media (max-width: 900px) {
+            .pi-card { grid-template-columns: 1fr; padding: 2.5rem; text-align: center; }
+            .pi-image { height: 350px; }
+        }
+
+        .social-links-container {
+    display: flex;
+    gap: 2.5rem; /* Spacious Apple-style spacing */
+    margin-top: 1.5rem;
+}
+
+.social-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+/* The Underline Effect seen in your reference images */
+.social-item span {
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: 0.3s;
+}
+
+.social-item:hover {
+    color: var(--accent); /* Solar Gold from your theme */
+    transform: translateY(-3px); /* Subtle lift */
+}
+
+.social-item:hover span {
+    border-bottom: 1px solid var(--accent);
+}
+
+.social-item i {
+    font-size: 1.1rem;
+    opacity: 0.8;
+}
+
+    </style>
+</head>
+<body>
+
+    <div class="aurora-container">
+        <div class="aurora aurora-1"></div>
+        <div class="aurora aurora-2"></div>
+    </div>
+
+    <nav>
+        <div class="logo">SEM<span>LAB</span></div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="updates.html">Updates</a>
+            <a href="research.html">Research</a>
+            <a href="group.html">Group</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <h1 class="section-title">Principal <span>Investigator</span></h1>
+        <section class="pi-card">
+            <img src="img/dr_gayen.jpg" class="pi-image" alt="Dr. Rabindranath Gayen">
+            <div class="pi-info">
+                <h2>Dr. Rabindranath Gayen</h2>
+                <h4>Associate Professor | Department of Physics, JU</h4>
+                <p>Dr. Gayen leads the SEM Lab, focusing on experimental condensed matter physics. His research group is dedicated to developing sustainable materials for high-efficiency solar cells and memory devices.</p>
+                <p>Previously, he served as a Postdoctoral Fellow at National Taiwan University and received his PhD from IIT Guwahati.</p>
+                <div class="social-links-container">
+                    <a href="PASTE_SCHOLAR_LINK" target="_blank" class="social-item">
+                        <i class="fab fa-google"></i> <span>Scholar</span>
+                    </a>
+    
+                     <a href="PASTE_RESEARCHGATE_LINK" target="_blank" class="social-item">
+                        <i class="fab fa-researchgate"></i> <span>ResearchGate</span>
+                    </a>
+
+                    <a href="PASTE_UNIVERSITY_LINK" target="_blank" class="social-item">
+                        <i class="fas fa-university"></i> <span>University Profile</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <h2 class="section-title">Research <span>Scholars</span></h2>
+        <div class="team-grid">
+            <div class="member-card">
+                <img src="img/scholar1.jpg" class="member-image" alt="Scholar Name">
+                <h3>Manoj Kangsabanik</h3>
+                <p>PhD Student</p>
+                <div class="research-focus">Research: CZTS Thin Film Photovoltaics</div>
+            </div>
+
+            <div class="member-card">
+                <img src="img/scholar2.jpg" class="member-image" alt="Scholar Name">
+                <h3>Alipsa Das</h3>
+                <p>PhD Student</p>
+                <div class="research-focus">Research: Nanostructured Energy Storage</div>
+            </div>
+
+            <div class="member-card">
+                <img src="img/scholar3.jpg" class="member-image" alt="Scholar Name">
+                <h3>Monalisa Pradhan</h3>
+                <p>PhD Student</p>
+                <div class="research-focus">Research: Neuromorphic RRAM Devices</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">M.Sc. <span>Students</span></h2>
+        <div class="team-grid">
+            <div class="member-card">
+                <img src="img/student1.jpg" class="member-image" alt="Student Name">
+                <h3>Abhrajit Nandi</h3>
+                <p>Project Student</p>
+            </div>
+            <div class="member-card">
+                <img src="img/student2.jpg" class="member-image" alt="Student Name">
+                <h3>Suman Hens</h3>
+                <p>Project Student</p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>&copy; 2026 SEM Lab Jadavpur University</footer>
+
+</body>
+</html>
