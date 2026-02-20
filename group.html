@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Team | SEM Lab</title>
@@ -149,6 +150,29 @@
 .social-item i {
     font-size: 1.1rem;
     opacity: 0.8;
+}
+
+/* This triggers for any screen smaller than 768px (Tablets & Phones) */
+@media (max-width: 768px) {
+    /* 1. Make the cards fill the screen width */
+    .research-card, .glass-card, .container {
+        width: 92% !important; /* Leave a small gap at the edges */
+        padding: 20px !important; /* Reduce padding to save space */
+        margin: 10px auto !important;
+    }
+
+    /* 2. Shrink the Typography */
+    h1 {
+        font-size: 1.8rem !important; /* Large desktop fonts look huge on mobile */
+        line-height: 1.2 !important;
+    }
+
+    /* 3. Stack elements that were side-by-side */
+    .meta-info, .meta-row {
+        flex-direction: column !important; /* Stack rows vertically */
+        grid-template-columns: 1fr !important; /* Change grids to one column */
+        gap: 15px !important;
+    }
 }
 
     </style>
