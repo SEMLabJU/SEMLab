@@ -122,21 +122,37 @@
         .social-item:hover span { border-bottom: 1px solid var(--accent); }
 
         /* TEAM GRID */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-bottom: 6rem;
-        }
+        /* UPDATED TEAM GRID FOR 2x2 LAYOUT */
+.team-grid {
+    display: grid;
+    /* This forces exactly 2 columns on desktop */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 2.5rem;
+    margin-bottom: 6rem;
+    max-width: 1000px; /* Limits width so cards don't get too wide */
+    margin-left: auto;
+    margin-right: auto;
+}
 
-        .member-card {
-            background: var(--glass);
-            border: 0.5px solid var(--border);
-            border-radius: 35px;
-            padding: 2.5rem;
-            text-align: center;
-            transition: 0.4s cubic-bezier(0.2, 1, 0.2, 1);
-        }
+/* Ensure images and text stay centered */
+.member-card {
+    background: var(--glass);
+    border: 0.5px solid var(--border);
+    border-radius: 35px;
+    padding: 3rem 2rem;
+    text-align: center;
+    transition: 0.4s cubic-bezier(0.2, 1, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Responsive: Stack them into 1 column on small phones */
+@media (max-width: 600px) {
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+}
         .member-card:hover { transform: translateY(-10px); background: rgba(255,255,255,0.08); border-color: var(--accent); }
 
         .member-image {
@@ -191,11 +207,23 @@
         
         <h1 class="section-title">Principal <span>Investigator</span></h1>
         <section class="pi-card">
-            <img src="img/dr_gayen.jpg" class="pi-image" alt="Dr. Rabindranath Gayen">
+            <img src="https://static.wixstatic.com/media/6440ba_5e3b6c39aef14f51aadded06b28cbdf8~mv2.jpg/v1/fill/w_281,h_285,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/FB_IMG_1724927065203_edited.jpg" class="pi-image" alt="Dr. Rabindranath Gayen">
             <div class="pi-info">
                 <h2>Dr. Rabindranath Gayen</h2>
                 <h4>Associate Professor | Department of Physics, JU</h4>
                 <p>Dr. Gayen leads the SEM Lab, focusing on experimental condensed matter physics. His research group is dedicated to developing sustainable materials for high-efficiency solar cells and memory devices.</p>
+                <center><h1>Research Interests:</h1></center><br><ul>
+                    <li>Optoelectronic Materials and Devices</li>
+                    <li>Resistive (ReRAM) Memory Applications </li>
+                    <li>Oxide Semiconductor Nanostructures</li>
+                    <li>Energy Materials</li>
+                    <li>Kesterite Thin Films</li>
+                    <li>Thin Film Solar Cells</li>
+                    <li>2D Materials</li>
+                    <li>Polymer Nanocomposites</li>
+                    <li>Supercapacitors</li>
+                    <li>Triboelectric Nanogenerators (TENGs)</li>
+                </ul>
                 <div class="social-links-container">
                     <a href="#" target="_blank" class="social-item"><i class="fab fa-google"></i> <span>Scholar</span></a>
                     <a href="#" target="_blank" class="social-item"><i class="fab fa-researchgate"></i> <span>ResearchGate</span></a>
@@ -206,38 +234,59 @@
         <h2 class="section-title">Research <span>Scholars</span></h2>
         <div class="team-grid">
             <div class="member-card">
-                <img src="img/scholar1.jpg" class="member-image" alt="Scholar Name">
+                <img src="https://static.wixstatic.com/media/6440ba_39024145acc04d459c080f630b425a62~mv2.jpg/v1/fill/w_395,h_373,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/1683457763414.jpg" class="member-image" alt="Scholar Name">
                 <h3>Manoj Kangsabanik</h3>
-                <p>PhD Student</p>
-                <div class="research-focus">Research: CZTS Thin Film Photovoltaics</div>
+                <p>Doctoral Student (SRF)</p>
+                <div>PhD since : March 2023 - Present</div>
+                <div class="research-focus">Research Topic: Optoelectronic Devices employing Kesterite Thin Films</div>
             </div>
 
             <div class="member-card">
-                <img src="img/scholar2.jpg" class="member-image" alt="Scholar Name">
-                <h3>Alipsa Das</h3>
-                <p>PhD Student</p>
-                <div class="research-focus">Research: Nanostructured Energy Storage</div>
+                <img src="https://static.wixstatic.com/media/6440ba_e69c19b9da9146a7b3638f5fbd91f086~mv2.jpg/v1/fill/w_395,h_373,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/WhatsApp%20Image%202024-08-29%20at%2016_edited_e.jpg" class="member-image" alt="Scholar Name">
+                <h3>Soumyodeep Banerjee</h3>
+                <p>Doctoral Student (JRF)</p>
+                <div>PhD since : May 2023 - Present</div>
+                <div class="research-focus">Research: Biomedical Instrumentation and Nanomaterials</div>
             </div>
 
             <div class="member-card">
-                <img src="img/scholar3.jpg" class="member-image" alt="Scholar Name">
+                <img src="https://static.wixstatic.com/media/6440ba_2b6e2cbc990244ecbd75e933de74f3c2~mv2.jpg/v1/fill/w_395,h_373,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/WhatsApp%20Image%202024-08-29%20at%2016_49_edited.jpg" class="member-image" alt="Scholar Name">
                 <h3>Monalisa Pradhan</h3>
-                <p>PhD Student</p>
-                <div class="research-focus">Research: Neuromorphic RRAM Devices</div>
+                <p>Doctoral Student (JRF)</p>
+                <div>PhD since : May 2023 - Present</div>
+                <div class="research-focus">Research: Ferrite Materials for Energy Storage Applications</div>
+            </div>
+
+        <div class="member-card">
+                <img src="https://static.wixstatic.com/media/6440ba_e46535db26184d1fae7ce2b717704e4c~mv2.jpg/v1/fill/w_395,h_373,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_20230828_144304_edited.jpg" class="member-image" alt="Scholar Name">
+                <h3>Alipsa Das</h3>
+                <p>Doctoral Student (JRF)</p>
+                <div>PhD since : August 2024 - Present</div>
+                <div class="research-focus">Research: Triboelectric Nanogenerators (TENGs)</div>
             </div>
         </div>
 
         <h2 class="section-title">M.Sc. <span>Students</span></h2>
         <div class="team-grid">
             <div class="member-card">
-                <img src="img/student1.jpg" class="member-image" alt="Student Name">
+                <img src="https://static.wixstatic.com/media/6440ba_a729f08c5bc8454bb430a80ae5ff7120~mv2.jpg/v1/crop/x_43,y_0,w_1023,h_1030/fill/w_216,h_217,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG-20231022-WA0003_edited_edited_edited.jpg" class="member-image" alt="Student Name">
                 <h3>Abhrajit Nandi</h3>
-                <p>Project Student</p>
+                <p>M.Sc. Project Student & Project Assistant</p>
+                <p>Research: Optoelectronics </p>
             </div>
+
             <div class="member-card">
-                <img src="img/student2.jpg" class="member-image" alt="Student Name">
+                <img src="https://static.wixstatic.com/media/6440ba_4415b92168fc4e92a981079d5b88493d~mv2.jpg/v1/crop/x_0,y_341,w_1706,h_1714/fill/w_216,h_217,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/9c030f83-ce2a-4375-b6f9-698b258ad773_edited.jpg" class="member-image" alt="Student Name">
                 <h3>Suman Hens</h3>
-                <p>Project Student</p>
+                <p>M.Sc. Project Student & Project Assistant</p>
+                <p>Research : Optoelectronics</p>
+            </div>
+
+            <div class="member-card">
+                <img src="https://static.wixstatic.com/media/6440ba_da8451d11ae54f0c9179927187d9ab2d~mv2.jpeg/v1/crop/x_43,y_0,w_1138,h_1143/fill/w_216,h_217,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/a80389e1-ed53-4d07-ab45-1d4aaccaaa09.jpeg" class="member-image" alt="Student Name">
+                <h3>Payel Dolai​</h3>
+                <p>M.Sc. Project Student & Project Assistant</p>
+                <p>Research : Supercapacitors</p>
             </div>
         </div>
 
