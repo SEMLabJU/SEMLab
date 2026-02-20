@@ -18,25 +18,67 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg); color: var(--text); font-family: 'Plus Jakarta Sans', sans-serif; -webkit-font-smoothing: antialiased; }
+        body { background: var(--bg); color: var(--text); font-family: 'Plus Jakarta Sans', sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 
-        /* AURORA BACKGROUND */
-        .aurora-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: #000; }
-        .aurora { position: absolute; width: 700px; height: 700px; border-radius: 50%; filter: blur(120px); opacity: 0.25; animation: float 20s infinite alternate; }
+        /* --- THE ORIGINAL WORKING AURORA --- */
+        .aurora-container { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            z-index: -1; 
+            background: #000; 
+            overflow: hidden;
+        }
+        .aurora { 
+            position: absolute; 
+            width: 700px; 
+            height: 700px; 
+            border-radius: 50%; 
+            filter: blur(120px); 
+            opacity: 0.25; 
+            animation: float 20s infinite alternate; 
+        }
         .aurora-1 { background: var(--accent); top: -100px; right: -50px; }
         .aurora-2 { background: #0a84ff; bottom: -200px; left: -100px; }
-        @keyframes float { from { transform: translate(0, 0); } to { transform: translate(100px, 100px); } }
+        
+        @keyframes float { 
+            from { transform: translate(0, 0); } 
+            to { transform: translate(100px, 100px); } 
+        }
 
-        /* NAV */
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 8%; position: fixed; width: 100%; top: 0; z-index: 1000; background: rgba(0,0,0,0.5); backdrop-filter: blur(20px) saturate(180%); border-bottom: 0.5px solid var(--border); }
-        .logo span { color: var(--accent); font-weight: 800; }
-        .nav-links a { color: rgba(255,255,255,0.6); text-decoration: none; margin-left: 2rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+        /* NAV - Fixed for Mobile */
+        nav { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 1rem 8%; 
+            position: fixed; 
+            width: 100%; 
+            top: 0; 
+            z-index: 1000; 
+            background: rgba(0,0,0,0.8); 
+            backdrop-filter: blur(20px); 
+            border-bottom: 0.5px solid var(--border); 
+        }
+        .logo { font-weight: 800; text-decoration: none; color: white; font-size: 1.2rem; }
+        .logo span { color: var(--accent); }
+        .nav-links a { 
+            color: rgba(255,255,255,0.6); 
+            text-decoration: none; 
+            margin-left: 1.5rem; 
+            font-size: 0.75rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+        }
+        .nav-links a.active { color: var(--accent); }
 
         /* CONTENT WRAPPER */
-        .container { padding: 8rem 8% 5rem; }
+        .container { padding: 8rem 8% 5rem; max-width: 1400px; margin: 0 auto; }
 
         /* SECTION TITLES */
-        .section-title { font-size: 2.5rem; font-weight: 800; letter-spacing: -1.5px; margin-bottom: 3rem; text-align: left; }
+        .section-title { font-size: clamp(1.8rem, 5vw, 2.5rem); font-weight: 800; letter-spacing: -1.5px; margin-bottom: 3rem; text-align: left; }
         .section-title span { color: var(--accent); }
 
         /* PI CARD (DR. GAYEN) */
@@ -50,19 +92,34 @@
             border-radius: 40px;
             padding: 4rem;
             margin-bottom: 6rem;
+            align-items: center;
         }
 
         .pi-image {
             width: 100%;
-            height: 450px;
-            object-fit: cover;
+            height: auto;
             border-radius: 30px;
             border: 0.5px solid var(--border);
         }
 
-        .pi-info h2 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-        .pi-info h4 { color: var(--accent); font-weight: 400; margin-bottom: 2rem; letter-spacing: 1px; }
+        .pi-info h2 { font-size: clamp(1.5rem, 4vw, 2.5rem); margin-bottom: 0.5rem; }
+        .pi-info h4 { color: var(--accent); font-weight: 400; margin-bottom: 2rem; letter-spacing: 1px; font-size: 0.9rem; }
         .pi-info p { color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 1.5rem; }
+
+        /* SOCIAL LINKS */
+        .social-links-container { display: flex; gap: 2rem; margin-top: 1.5rem; flex-wrap: wrap; }
+        .social-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .social-item span { border-bottom: 1px solid transparent; padding-bottom: 2px; }
+        .social-item:hover { color: var(--accent); }
+        .social-item:hover span { border-bottom: 1px solid var(--accent); }
 
         /* TEAM GRID */
         .team-grid {
@@ -76,103 +133,41 @@
             background: var(--glass);
             border: 0.5px solid var(--border);
             border-radius: 35px;
-            padding: 2rem;
+            padding: 2.5rem;
             text-align: center;
             transition: 0.4s cubic-bezier(0.2, 1, 0.2, 1);
         }
-
-        .member-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255,255,255,0.08);
-            border-color: var(--accent);
-        }
+        .member-card:hover { transform: translateY(-10px); background: rgba(255,255,255,0.08); border-color: var(--accent); }
 
         .member-image {
-            width: 150px;
-            height: 150px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
             object-fit: cover;
             margin-bottom: 1.5rem;
-            border: 2px solid var(--border);
+            border: 1px solid var(--border);
         }
 
         .member-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
-        .member-card p { font-size: 0.85rem; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
-        .member-card .research-focus { font-size: 0.9rem; color: rgba(255,255,255,0.5); text-transform: none; letter-spacing: 0; }
-
-        /* SOCIAL ICONS */
-        .member-socials { margin-top: 1rem; display: flex; justify-content: center; gap: 1rem; }
-        .member-socials a { color: rgba(255,255,255,0.4); transition: 0.3s; }
-        .member-socials a:hover { color: #fff; }
+        .member-card p { font-size: 0.8rem; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
+        .member-card .research-focus { font-size: 0.85rem; color: rgba(255,255,255,0.5); }
 
         footer { text-align: center; padding: 4rem; opacity: 0.3; font-size: 0.8rem; }
 
+        /* --- MOBILE MEDIA QUERIES --- */
         @media (max-width: 900px) {
-            .pi-card { grid-template-columns: 1fr; padding: 2.5rem; text-align: center; }
-            .pi-image { height: 350px; }
+            nav { padding: 1rem 5%; }
+            .nav-links a { margin-left: 0.8rem; font-size: 0.65rem; }
+            .pi-card { 
+                grid-template-columns: 1fr; 
+                padding: 2rem; 
+                text-align: center; 
+                gap: 2rem; 
+            }
+            .pi-image { max-width: 250px; margin: 0 auto; }
+            .social-links-container { justify-content: center; }
+            .section-title { text-align: center; }
         }
-
-        .social-links-container {
-    display: flex;
-    gap: 2.5rem; /* Spacious Apple-style spacing */
-    margin-top: 1.5rem;
-}
-
-.social-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: rgba(255, 255, 255, 0.6);
-    text-decoration: none;
-    font-size: 0.95rem;
-    font-weight: 500;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-}
-
-/* The Underline Effect seen in your reference images */
-.social-item span {
-    border-bottom: 1px solid transparent;
-    padding-bottom: 2px;
-    transition: 0.3s;
-}
-
-.social-item:hover {
-    color: var(--accent); /* Solar Gold from your theme */
-    transform: translateY(-3px); /* Subtle lift */
-}
-
-.social-item:hover span {
-    border-bottom: 1px solid var(--accent);
-}
-
-.social-item i {
-    font-size: 1.1rem;
-    opacity: 0.8;
-}
-
-/* This triggers for any screen smaller than 768px (Tablets & Phones) */
-@media (max-width: 768px) {
-    /* 1. Make the cards fill the screen width */
-    .research-card, .glass-card, .container {
-        width: 92% !important; /* Leave a small gap at the edges */
-        padding: 20px !important; /* Reduce padding to save space */
-        margin: 10px auto !important;
-    }
-
-    /* 2. Shrink the Typography */
-    h1 {
-        font-size: 1.8rem !important; /* Large desktop fonts look huge on mobile */
-        line-height: 1.2 !important;
-    }
-
-    /* 3. Stack elements that were side-by-side */
-    .meta-info, .meta-row {
-        flex-direction: column !important; /* Stack rows vertically */
-        grid-template-columns: 1fr !important; /* Change grids to one column */
-        gap: 15px !important;
-    }
-}
     </style>
 </head>
 <body>
@@ -183,12 +178,12 @@
     </div>
 
     <nav>
-        <div class="logo">SEM<span>LAB</span></div>
+        <a href="index.html" class="logo">SEM<span>LAB</span></a>
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="updates.html">Updates</a>
             <a href="research.html">Research</a>
-            <a href="group.html">Group</a>
+            <a href="group.html" class="active">Group</a>
         </div>
     </nav>
 
@@ -201,19 +196,9 @@
                 <h2>Dr. Rabindranath Gayen</h2>
                 <h4>Associate Professor | Department of Physics, JU</h4>
                 <p>Dr. Gayen leads the SEM Lab, focusing on experimental condensed matter physics. His research group is dedicated to developing sustainable materials for high-efficiency solar cells and memory devices.</p>
-                <p>Previously, he served as a Postdoctoral Fellow at National Taiwan University and received his PhD from IIT Guwahati.</p>
                 <div class="social-links-container">
-                    <a href="PASTE_SCHOLAR_LINK" target="_blank" class="social-item">
-                        <i class="fab fa-google"></i> <span>Scholar</span>
-                    </a>
-    
-                     <a href="PASTE_RESEARCHGATE_LINK" target="_blank" class="social-item">
-                        <i class="fab fa-researchgate"></i> <span>ResearchGate</span>
-                    </a>
-
-                    <a href="PASTE_UNIVERSITY_LINK" target="_blank" class="social-item">
-                        <i class="fas fa-university"></i> <span>University Profile</span>
-                    </a>
+                    <a href="#" target="_blank" class="social-item"><i class="fab fa-google"></i> <span>Scholar</span></a>
+                    <a href="#" target="_blank" class="social-item"><i class="fab fa-researchgate"></i> <span>ResearchGate</span></a>
                 </div>
             </div>
         </section>
