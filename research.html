@@ -13,6 +13,19 @@
             --text-dim: #a0aec0;
         }
 
+
+        /* --- 3. NAVIGATION --- */
+        nav { 
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 1rem 8%; position: fixed; width: 100%; top: 0; z-index: 1000; 
+            background: rgba(0,0,0,0.5); backdrop-filter: blur(25px) saturate(180%); 
+            border-bottom: 0.5px solid var(--border); 
+        }
+        .logo { font-weight: 800; font-size: 1.2rem; }
+        .logo span { color: var(--accent); }
+        .nav-links a { color: rgba(255,255,255,0.6); text-decoration: none; margin-left: 2rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+
+
         body {
             margin: 0;
             font-family: 'Inter', sans-serif;
@@ -136,10 +149,22 @@
 </head>
 <body>
 
+    <nav>
+        <div class="logo">SEM<span>LAB</span></div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="updates.html">Updates</a>
+            <a href="group.html">Group</a>
+            <a href="facilities.html">Facilities</a>
+            <a href="contact.html">Open Positions</a>
+        </div>
+    </nav>
+
     <div class="header-section">
         <h2>Publications</h2>
         <h1>Latest Research from SEMLAB</h1>
     </div>
+    
 
     <div id="research-grid">
         </div>
